@@ -2,13 +2,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './redux/rootReducer.js';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 const store = createStore(
   rootReducer,
   compose(
+    applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 ); // add rootReducer in store
