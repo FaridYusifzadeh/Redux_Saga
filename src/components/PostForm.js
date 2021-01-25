@@ -12,6 +12,9 @@ class PostForm extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     const { title } = this.state;
+    if(!title.trim()){
+        return 
+    }
     const newPost = {
       title,
       id: Date.now().toString(), // create random id
